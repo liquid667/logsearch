@@ -1,1 +1,9 @@
-<p>{{'GetIt message: ' + data.message + ', status: ' + status }}</p>
+<div>
+    <form novalidate class="css-form">
+        Username: <br>
+        <input type="text" ng-model="user.username" placeholder="{{data.username}}"><br>
+        Password: <br>
+        <input type="password" ng-model="user.password" placeholder="{{data.password}}"><br>
+        <button ng-click="login(user)">login</button>
+    </form>
+</div>
