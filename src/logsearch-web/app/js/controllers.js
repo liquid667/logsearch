@@ -24,15 +24,24 @@ controllers.controller('getitController', ['$scope', '$http', function($scope, $
                     $scope.data = data;
                     $scope.status = status;
                 });
-
-//        $http({
-//            method: 'JSONP',
-//            url: 'http://localhost:8084/logsearch-backend2/webapi/myresource?callback=JSON_CALLBACK'
-//        }).success(function(data, status, headers, config) {
-//            $scope.data = data;
-//            $scope.status = status;
-//        }).error(function(data, status, headers, config) {
-//            $scope.message = data || 'request failed!';
-//            $scope.status = status;
-//        });
     }]);
+
+/* loginController */
+controllers.controller('loginController', ['$scope', '$http', 'loginService', function($scope, $http, loginService) {
+        $scope.data = null;
+        $scope.status = null;
+
+        $http.jsonp('http://localhost:8084/logsearch-backend/webapi/authenticate?username=mikjoh&password=s3cr3t&callback=JSON_CALLBACK')
+                .success(function(data, status) {
+                    $scope.data = data;
+                    $scope.status = status;
+                })
+                .error(function(data, status) {
+                    $scope.data = data;
+                    $scope.status = status;
+                });
+    }]);
+
+controllers.controller('myController', ['$scope', 'loginService', function($scope, loginService) {
+        
+}]);
